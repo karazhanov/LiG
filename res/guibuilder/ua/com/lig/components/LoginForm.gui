@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" layout="BorderLayout" borderLayoutAbsoluteCenter="true"  title="LoginForm" name="LoginForm">
+  <component type="Container" layout="BoxLayout" boxLayoutAxis="Y"  name="Components">
+    <layoutConstraint value="Center" />
+    <component type="Label" text="E-mail" name="eMailLabel">
+    </component>
+    <component type="TextField" text="123" hint="E-mail" rows="1" name="eMailEditText">
+    </component>
+    <component type="Label" text="Password" name="passwordLabel">
+    </component>
+    <component type="TextField" text="" hint="Password" constraint="65536" name="passwordEditText">
+    </component>
+    <component type="Button" text="Login" name="loginButton">
+    </component>
+  </component>
+</component>
