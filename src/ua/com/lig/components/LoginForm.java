@@ -1,14 +1,43 @@
 package ua.com.lig.components;
+
+import com.codename1.io.ConnectionRequest;
+import com.codename1.io.JSONParser;
+import com.codename1.io.NetworkManager;
+import ua.com.lig.utils.Consts;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Hashtable;
+
 public class LoginForm extends com.codename1.ui.Form {
     public LoginForm() {
         this(com.codename1.ui.util.Resources.getGlobalResources());
     }
-    
+
     public LoginForm(com.codename1.ui.util.Resources resourceObjectInstance) {
         initGuiBuilderComponents(resourceObjectInstance);
+        gui_loginButton.addActionListener(evt -> {
+            // TODO login
+            ConnectionRequest r = new ConnectionRequest(){
+                @Override
+                protected void postResponse() {
+                }
+                @Override
+                protected void readResponse(InputStream input) throws IOException {
+                    JSONParser jsonParser = new JSONParser();
+                    Hashtable h = jsonParser.parse(new InputStreamReader(input));
+                    System.out.println("RESULT = " + h);
+                }
+            };
+            r.setUrl(Consts.SERVER_ADDRESS);//"http://localhost:8080/message");
+            r.setPost(true);
+//            r.addArgument("name", "test");\
+            NetworkManager.getInstance().addToQueue(r);
+        });
     }
-    
-//-- DON'T EDIT BELOW THIS LINE!!!
+
+    //-- DON'T EDIT BELOW THIS LINE!!!
     private com.codename1.ui.Container gui_Components = new com.codename1.ui.Container(new com.codename1.ui.layouts.BoxLayout(com.codename1.ui.layouts.BoxLayout.Y_AXIS));
     private com.codename1.ui.Label gui_eMailLabel = new com.codename1.ui.Label();
     private com.codename1.ui.TextField gui_eMailEditText = new com.codename1.ui.TextField();
@@ -17,7 +46,7 @@ public class LoginForm extends com.codename1.ui.Form {
     private com.codename1.ui.Button gui_loginButton = new com.codename1.ui.Button();
 
 
-// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+// <editor-fold defaultstate="collapsed" desc="Generated Code">
     private void initGuiBuilderComponents(com.codename1.ui.util.Resources resourceObjectInstance) {
         setLayout(new com.codename1.ui.layouts.BorderLayout());
         setTitle("LoginForm");

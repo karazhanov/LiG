@@ -9,9 +9,9 @@
     </component>
     <component type="Label" text="Password" name="passwordLabel">
     </component>
-    <component type="TextField" text="" hint="Password" constraint="65536" name="passwordEditText">
+    <component type="TextField" hint="Password" constraint="65536" name="passwordEditText">
     </component>
-    <component type="Button" text="Login" name="loginButton">
+    <component type="Button" text="" name="loginButton" commandName="" commandId="0" commandVarName="d" commandHasCode="true"  actionEvent="true">
     </component>
   </component>
 </component>
